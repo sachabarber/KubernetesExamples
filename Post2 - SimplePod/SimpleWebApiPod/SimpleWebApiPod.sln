@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWebApiPod", "SimpleWebApiPod\SimpleWebApiPod.csproj", "{3FF8EC09-8803-420E-9E63-B82BC71FF527}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{65079199-9108-4837-BF60-54FABC7257FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF8EC09-8803-420E-9E63-B82BC71FF527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF8EC09-8803-420E-9E63-B82BC71FF527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF8EC09-8803-420E-9E63-B82BC71FF527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF8EC09-8803-420E-9E63-B82BC71FF527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65079199-9108-4837-BF60-54FABC7257FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65079199-9108-4837-BF60-54FABC7257FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65079199-9108-4837-BF60-54FABC7257FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65079199-9108-4837-BF60-54FABC7257FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {110B8075-8E1F-4F0D-A2CB-DEC55C5C28CD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  simplewebapipod:
+    image: simplewebapipod
+    ports:
+    - "80:80"
+    build:
+      context: .
+      dockerfile: SimpleWebApiPod\Dockerfile
