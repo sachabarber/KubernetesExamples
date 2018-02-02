@@ -4,7 +4,7 @@ docker build -t SimpleWebApiPod-v1 -f NoVisualStudioDockerfile
 
 RUN IT USING DOCKER
 
-docker run -d -p 8080:80 --name SimpleWebApiPod SimpleWebApiPod-v1
+docker run -d -p 80:80 --name SimpleWebApiPod SimpleWebApiPod-v1
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" SimpleWebApiPod
 
 grab IP and then -> http://172.20.32.255/api/values
