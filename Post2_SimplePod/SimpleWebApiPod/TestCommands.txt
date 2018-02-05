@@ -1,6 +1,22 @@
+VISUAL STUDIO DOCKER SUPPORT
+- Go with the inbuilt stuff then add a new custom docker file, as inbuilt one assumes lots of things, heirachy etc etc, and is not very command line friendly
+
+
 BUILD IMAGE
 
 docker build -t simplewebapipod-v1 -f NoVisualStudioDockerfile .
+
+You create your Docker image and push it to a registry before referring to it in a Kubernetes pod.
+
+
+RUN IT IN KUBECTL
+https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/#create-a-docker-container-image
+https://medium.com/@maumribeiro/running-your-own-docker-images-in-minikube-for-windows-ea7383d931f6
+
+c:\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr
+c:\kubectl.exe run simplewebapipod-node --image=simplewebapipod-v1 --port=80
+
+
 
 
 RUN IT USING DOCKER
@@ -11,6 +27,11 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" SimpleWebApiPo
 grab IP and then -> http://172.20.32.255/api/values
 
 
-
 RUN IT USING DOCKER COMPOSE
 docker compose up --build
+
+
+
+
+
+
