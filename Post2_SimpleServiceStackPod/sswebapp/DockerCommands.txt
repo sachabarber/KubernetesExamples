@@ -1,0 +1,62 @@
+DOCKER
+
+cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
+docker build -t "sswebapp/v1" .
+docker run -p 5000:5000 sswebapp/v1
+
+
+cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
+docker build -t "sswebapp:v1" .
+docker run -p 5000:5000 sswebapp:v1
+
+
+
+
+DOCKER HUB
+
+
+
+> docker login --username=sachabarber
+> cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
+> docker build -t "sswebapp:v1" .
+> docker tag sswebapp:v1 sachabarber/sswebapp:v1
+> docker push sachabarber/sswebapp
+> docker pull sachabarber/sswebapp
+> docker run -p 5000:5000 sachabarber/sswebapp:v1
+
+
+
+RUN IN KUBERNETES USING DOCKER HUB
+
+You create your Docker image and push it to a registry before referring to it in a Kubernetes pod.
+
+https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/#create-a-docker-container-image
+https://medium.com/@maumribeiro/running-your-own-docker-images-in-minikube-for-windows-ea7383d931f6
+https://stackoverflow.com/questions/37302776/kubectl-get-pods-kubectl-get-pods-status-imagepullbackoff
+
+
+> c:\
+> cd\
+> minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
+> minikube docker-env
+> & minikube docker-env | Invoke-Expression
+
+> kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp\dockerhub-sswebappPod.yaml
+ OR
+> kubectl run simple-sswebapi-pod-v1 --image=sachabarber/sswebapp:v1 --port=5000
+
+
+
+MINIKUBE PRIVATE DOCKER REPO
+- to do after above works
+
+
+
+
+
+USEFUL COMMANDS
+
+# Delete all containers
+docker rm $(docker ps -a -q)
+# Delete all images
+docker rmi $(docker images -q)
