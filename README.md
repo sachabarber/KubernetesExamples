@@ -11,7 +11,7 @@ I will be walking through how do do the following things with Kubernetes
 - ConfigMaps/Secrets
 - Services
 - Singletons (such as a DB)
-- Deployments
+- Deployments/Replication Sets/Health Checks
 
 The best bet is to read the blog post then find the section of the repo that goes with it, then follow along
 
