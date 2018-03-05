@@ -36,12 +36,14 @@ You create your Docker image and push it to a registry before referring to it in
 
 > c:\
 > cd\
-> minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
-> kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=sachabarber/sswebapp:v1  --port=5000
-> kubectl expose deployment simple-sswebapi-pod-v1 --type=NodePort --name=simple-sswebapi-service
-> kubectl get services simple-sswebapi-service
-> minikube service simple-sswebapi-service --url 
+> .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
+> .\kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=sachabarber/sswebapp:v1  --port=5000
+> .\kubectl expose deployment simple-sswebapi-pod-v1 --type=NodePort --name=simple-sswebapi-service
+> .\kubectl get services simple-sswebapi-service
+> .\minikube service simple-sswebapi-service --url 
   to grab the URL which allows you to then hit the service in browser YAY
+
+
 
 
 
@@ -63,10 +65,10 @@ https://mtpereira.com/local-development-k8s.html
 
 > c:\
 > cd\
-> minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr --insecure-registry localhost:5000
-> minikube docker-env
+> .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr --insecure-registry localhost:5000
+> .\minikube docker-env
 > & minikube docker-env | Invoke-Expression
-> kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp\LocalRegistry.yaml
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp\LocalRegistry.yaml
 
 > In bash
 > kubectl port-forward --namespace kube-system \
@@ -77,10 +79,10 @@ https://mtpereira.com/local-development-k8s.html
 > docker build -t "sswebapp:v1" .
 > docker tag sacha/sswebapp:v1 localhost:5000/sacha/sswebapp:v1
 > docker push localhost:5000/sacha/sswebapp:v1
-> kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=localhost:5000/sacha/sswebapp:v1  --port=5000
-> kubectl expose deployment simple-sswebapi-pod-v1 --type=NodePort --name=simple-sswebapi-service
-> kubectl get services simple-sswebapi-service
-> minikube service simple-sswebapi-service --url 
+> .\kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=localhost:5000/sacha/sswebapp:v1  --port=5000
+> .\kubectl expose deployment simple-sswebapi-pod-v1 --type=NodePort --name=simple-sswebapi-service
+> .\kubectl get services simple-sswebapi-service
+> .\minikube service simple-sswebapi-service --url 
   to grab the URL which allows you to then hit the service in browser YAY
 
 
@@ -91,12 +93,34 @@ https://mtpereira.com/local-development-k8s.html
 
 USEFUL COMMANDS
 
-- c:\minikube.exe dashboard (DASHBOARD)
-- c:\kubectl describe pod fail-1036623984-hxoas
-- kubectl get pods -o wide (DESCRIBE POD)
-- kubectl describe pod `<podName>` | grep IP | awk '{print $2}' (GET IP ADDRESS FROM POD)
-- kubectl expose deployment simplewebapipod-v1 --type="NodePort" (CREATE DEPLOYMENT WITHOUT YAML)
-- kubectl get deploy deploymentname -o yaml --export (GET YAML FROM DEPLOYMENT, CAN USE THIS FOR PODs TOO)
+- .\minikube.exe dashboard (DASHBOARD)
+- .\kubectl describe pod fail-1036623984-hxoas
+- .\kubectl get pods -o wide (DESCRIBE POD)
+- .\kubectl describe pod `<podName>` | grep IP | awk '{print $2}' (GET IP ADDRESS FROM POD)
+- .\kubectl expose deployment simplewebapipod-v1 --type="NodePort" (CREATE DEPLOYMENT WITHOUT YAML)
+- .\kubectl get deploy deploymentname -o yaml --export (GET YAML FROM DEPLOYMENT, CAN USE THIS FOR PODs TOO)
+- .\kubectl.exe get pods
+
+ENV vars
+- .\kubectl.exe exec simple-sswebapi-pod-v1-f7f8764b9-xs822 env
+
+SSH
+You can ssh into the VM by finding the IP (from kubectl config view) and using username "docker" password "tcuser":
+- ssh docker@192.168.XX.XX
+
+
+DNS lookup
+
+
+- .\kubectl get pod -n kube-system
+- .\kubectl run -i --tty busybox --image=busybox --restart=Never
+
+THEN
+
+nslookup simple-sswebapi-service
+
+
+
 
 
 
