@@ -6,6 +6,7 @@ using Funq;
 using ServiceStack;
 using ServiceStack.Configuration;
 using sswebapp.ServiceInterface;
+using ServiceStack.Api.Swagger;
 
 namespace sswebapp
 {
@@ -42,6 +43,8 @@ namespace sswebapp
         // Configure your AppHost with the necessary configuration and dependencies your App needs
         public override void Configure(Container container)
         {
+            Plugins.Add(new SwaggerFeature());
+
             SetConfig(new HostConfig
             {
                 DefaultRedirectPath = "/metadata",
