@@ -11,6 +11,6 @@ spec:
     spec:
       containers:
       - name: sswebapi-pod-v1
-        image: sachabarber/sswebapp:v1
+        image: sachabarber/sswebapp-post4:v1
         ports:
         - containerPort: 5000

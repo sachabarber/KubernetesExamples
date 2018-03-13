@@ -1,13 +1,13 @@
 DOCKER
 
-cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
-docker build -t "sswebapp/v1" .
-docker run -p 5000:5000 sswebapp/v1
+cd C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\sswebapp
+docker build -t "sswebapp-post4/v1" .
+docker run -p 5000:5000 sswebapp-post4/v1
 
 
-cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
-docker build -t "sswebapp:v1" .
-docker run -p 5000:5000 sswebapp:v1
+cd C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\sswebapp
+docker build -t "sswebapp-post4:v1" .
+docker run -p 5000:5000 sswebapp-post4:v1
 
 
 
@@ -17,12 +17,12 @@ DOCKER HUB
 
 
 > docker login --username=sachabarber
-> cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
-> docker build -t "sswebapp:v1" .
-> docker tag sswebapp:v1 sachabarber/sswebapp:v1
-> docker push sachabarber/sswebapp
-> docker pull sachabarber/sswebapp
-> docker run -p 5000:5000 sachabarber/sswebapp:v1
+> cd C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\sswebapp
+> docker build -t "sswebapp-post4:v1" .
+> docker tag sswebapp-post4:v1 sachabarber/sswebapp-post4:v1
+> docker push sachabarber/sswebapp-post4
+> docker pull sachabarber/sswebapp-post4
+> docker run -p 5000:5000 sachabarber/sswebapp-post4:v1
 
 
 
@@ -37,7 +37,7 @@ You create your Docker image and push it to a registry before referring to it in
 > c:\
 > cd\
 > .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
-> .\kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=sachabarber/sswebapp:v1  --port=5000
+> .\kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=sachabarber/sswebapp-post4:v1  --port=5000
 > .\kubectl expose deployment simple-sswebapi-pod-v1 --type=NodePort --name=simple-sswebapi-service
 > .\kubectl get services simple-sswebapi-service
 > .\minikube service simple-sswebapi-service --url 
@@ -68,18 +68,18 @@ https://mtpereira.com/local-development-k8s.html
 > .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr --insecure-registry localhost:5000
 > .\minikube docker-env
 > & minikube docker-env | Invoke-Expression
-> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp\LocalRegistry.yaml
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\sswebapp\LocalRegistry.yaml
 
 > In bash
 > kubectl port-forward --namespace kube-system \
   $(kubectl get po -n kube-system | grep kube-registry-v0 | \
   awk '{print $1;}') 5000:5000
 
-> cd C:\Users\sacha\Desktop\KubernetesExamples\Post2_SimpleServiceStackPod\sswebapp
+> cd C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\sswebapp
 > docker build -t "sswebapp:v1" .
-> docker tag sacha/sswebapp:v1 localhost:5000/sacha/sswebapp:v1
-> docker push localhost:5000/sacha/sswebapp:v1
-> .\kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=localhost:5000/sacha/sswebapp:v1  --port=5000
+> docker tag sacha/sswebapp:v1 localhost:5000/sacha/sswebapp-post4:v1
+> docker push localhost:5000/sacha/sswebapp-post4:v1
+> .\kubectl run simple-sswebapi-pod-v1 --replicas=1 --labels="run=sswebapi-pod-v1" --image=localhost:5000/sacha/sswebapp-post4:v1  --port=5000
 > .\kubectl expose deployment simple-sswebapi-pod-v1 --type=NodePort --name=simple-sswebapi-service
 > .\kubectl get services simple-sswebapi-service
 > .\minikube service simple-sswebapi-service --url 
