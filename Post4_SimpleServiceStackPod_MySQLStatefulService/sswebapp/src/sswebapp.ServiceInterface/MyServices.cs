@@ -22,7 +22,7 @@ namespace sswebapp.ServiceInterface
                 var port = request.SqlProps.Port;
                 var uid = "root";
                 var password = "password";
-                string connectionString = $"server={server};port={port};user={uid};passwprd={password};";
+                string connectionString = $"server={server};port={port};user={uid};password={password};";
 
                 using (connection = new MySqlConnection(connectionString))
                 {
@@ -59,7 +59,7 @@ namespace sswebapp.ServiceInterface
             {
                 return new MySqlResponse
                 {
-                    Results = new List<string>() {  ex.Message }
+                    Results = new List<string>() {  ex.Message  + "\r\n" + ex.StackTrace}
                 };
             }
             finally
