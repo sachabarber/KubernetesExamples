@@ -8,6 +8,7 @@ spec:
     protocol: TCP
   selector:
     app: mysql
+  clusterIP: None
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
