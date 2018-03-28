@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: simple-sswebapi-pod-v1
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: run=sswebapi-pod-v1
+    spec:
+      containers:
+      - name: sswebapi-pod-v1
+        image: sachabarber/sswebapp-post-5:v1
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: config-volume
+          mountPath: /k8s/config
+      volumes:
+        - name: config-volume
+          configMap:
+            # Provide the name of the ConfigMap containing the files you want
+            # to add to the container
+            name: server-config

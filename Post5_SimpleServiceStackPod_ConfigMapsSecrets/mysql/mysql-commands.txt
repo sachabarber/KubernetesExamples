@@ -1,0 +1,32 @@
+> cd\
+> .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\mysql\nfs-volume.yaml
+> .\kubectl get pv
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post4_SimpleServiceStackPod_MySQLStatefulService\mysql\mysql-deployment.yaml
+> .\kubectl delete pod busybox
+> .\kubectl run -i --tty busybox --image=busybox --restart=Never
+
+THEN
+
+nslookup mysql
+
+> .\kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword
+show databases;
+use mysql;
+show tables;
+
+
+
+CLEAN UP
+> .\kubectl delete deployment mysql
+> .\kubectl delete service mysql
+> .\kubectl delete pvc mysql-pv-claim
+> .\kubectl get pods
+> .\kubectl delete pod mysql-775b4cd88c-tl5pj 
+
+
+
+
+
+
+
