@@ -17,9 +17,16 @@ spec:
         volumeMounts:
         - name: config-volume
           mountPath: /k8s/config
+        - name: secrets-volume
+          mountPath: /k8s/secrets          
       volumes:
         - name: config-volume
           configMap:
             # Provide the name of the ConfigMap containing the files you want
             # to add to the container
             name: server-config
+        - name: secrets-volume
+          secret:
+            # Provide the name of the Secret containing the files you want
+            # to add to the container
+            secretName: server-secrets            

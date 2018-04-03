@@ -36,6 +36,7 @@ namespace sswebapp
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddJsonFile("/k8s/config/sachaserver-properties", optional: true, reloadOnChange: true)
+                .AddJsonFile("/k8s/secrets/sachaserver-secrets-properties", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
