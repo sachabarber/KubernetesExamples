@@ -21,7 +21,7 @@ DOCKER HUB
 > docker build -t "sswebapp-post-5:v1" .
 > docker tag sswebapp-post-5:v1 sachabarber/sswebapp-post-5:v1
 > docker push sachabarber/sswebapp-post-5
-> docker pull sachabarber/sswebapp-post-5
+> docker pull sachabarber/sswebapp-post-5:v1
 > docker run -p 5000:5000 sachabarber/sswebapp-post-5:v1
 
 
@@ -37,13 +37,24 @@ You create your Docker image and push it to a registry before referring to it in
 > c:\
 > cd\
 > .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post5_SimpleServiceStackPod_ConfigMapsSecrets\sswebapp\deployment.yaml
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post5_SimpleServiceStackPod_ConfigMapsSecrets\sswebapp\service.yaml
+> .\kubectl get services simple-sswebapi-service
+> .\minikube service simple-sswebapi-service --url 
+  to grab the URL which allows you to then hit the service in browser YAY
 
 
-TODO NEED TO ADD THE APPLY STUFF HERE
-TODO NEED TO ADD THE APPLY STUFF HERE
-TODO NEED TO ADD THE APPLY STUFF HERE
-TODO NEED TO ADD THE APPLY STUFF HERE
-TODO NEED TO ADD THE APPLY STUFF HERE
+
+
+.\kubectl.exe get pods
+.\kubectl.exe get services
+.\kubectl.exe get deployments
+
+.\kubectl.exe delete pod XXX
+.\kubectl.exe delete service XXX
+.\kubectl.exe delete deployment XXX
+
+
 
 
 

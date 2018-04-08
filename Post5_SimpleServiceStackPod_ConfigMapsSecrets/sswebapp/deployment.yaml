@@ -7,7 +7,7 @@ spec:
   template:
     metadata:
       labels:
-        app: run=sswebapi-pod-v1
+        app: sswebapi-pod-v1
     spec:
       containers:
       - name: sswebapi-pod-v1

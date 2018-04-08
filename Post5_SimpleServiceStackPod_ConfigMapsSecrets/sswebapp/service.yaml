@@ -4,7 +4,7 @@ metadata:
   name: simple-sswebapi-service
 spec:
   selector:
-    app: run=sswebapi-pod-v1
+    app: sswebapi-pod-v1
   ports:
   - protocol: TCP
     port: 5000
