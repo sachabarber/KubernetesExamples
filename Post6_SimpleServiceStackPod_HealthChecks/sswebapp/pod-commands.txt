@@ -43,7 +43,7 @@ You create your Docker image and push it to a registry before referring to it in
 > .\minikube service simple-sswebapi-service --url 
   to grab the URL which allows you to then hit the service in browser YAY
 
-
+> .\kubectl scale deployment simple-sswebapi-pod-v1 --replicas=5
 
 
 .\kubectl.exe get pods

@@ -10,6 +10,9 @@ namespace sswebapp.ServiceInterface
 {
     public class MyServices : Service
     {
+
+        private Random rand = new Random();
+
         /// <summary>
         /// Set in <c>sswebapp.Startup.cs</c>. This is just for demo purposes only
         /// this is not a great design, but for this quick and dirty demo it does the job
@@ -104,9 +107,10 @@ namespace sswebapp.ServiceInterface
 
         public object Get(HealthCheck healthCheck)
         {
+            var someRandom = rand.Next(10);
             return new HttpResult()
             {
-                StatusCode = HttpStatusCode.OK,
+                StatusCode = someRandom > 5 ? HttpStatusCode.OK : HttpStatusCode.BadRequest,
                 ContentType = "application/json"
             };
         }

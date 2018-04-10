@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: sswebapi-pod-v1
-        image: sachabarber/sswebapp-post-5:v1
+        image: sachabarber/sswebapp-post-6:v1
         ports:
         - containerPort: 5000
         livenessProbe:
