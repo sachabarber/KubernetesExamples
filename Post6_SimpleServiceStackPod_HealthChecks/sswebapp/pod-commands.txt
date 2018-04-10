@@ -1,0 +1,60 @@
+DOCKER
+
+cd C:\Users\sacha\Desktop\KubernetesExamples\Post6_SimpleServiceStackPod_HealthChecks\sswebapp
+docker build -t "sswebapp-post-6/v1" .
+docker run -p 5000:5000 sswebapp-post-6/v1
+
+
+cd C:\Users\sacha\Desktop\KubernetesExamples\Post6_SimpleServiceStackPod_HealthChecks\sswebapp
+docker build -t "sswebapp-post-6:v1" .
+docker run -p 5000:5000 sswebapp-post-6:v1
+
+
+
+
+DOCKER HUB
+
+
+
+> docker login --username=sachabarber
+> cd C:\Users\sacha\Desktop\KubernetesExamples\Post6_SimpleServiceStackPod_HealthChecks\sswebapp
+> docker build -t "sswebapp-post-6:v1" .
+> docker tag sswebapp-post-6:v1 sachabarber/sswebapp-post-6:v1
+> docker push sachabarber/sswebapp-post-6
+> docker pull sachabarber/sswebapp-post-6:v1
+> docker run -p 5000:5000 sachabarber/sswebapp-post-6:v1
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+RUN IN KUBERNETES USING DOCKER HUB
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/
+
+You create your Docker image and push it to a registry before referring to it in a Kubernetes pod.
+
+> c:\
+> cd\
+> .\minikube.exe start --kubernetes-version="v1.9.0" --vm-driver="hyperv" --memory=1024 --hyperv-virtual-switch="Minikube Switch" --v=7 --alsologtostderr 
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post6_SimpleServiceStackPod_HealthChecks\sswebapp\deployment.yaml
+> .\kubectl.exe apply -f C:\Users\sacha\Desktop\KubernetesExamples\Post6_SimpleServiceStackPod_HealthChecks\sswebapp\service.yaml
+> .\kubectl get services simple-sswebapi-service
+> .\minikube service simple-sswebapi-service --url 
+  to grab the URL which allows you to then hit the service in browser YAY
+
+
+
+
+.\kubectl.exe get pods
+.\kubectl.exe get services
+.\kubectl.exe get deployments
+
+.\kubectl.exe delete pod XXX
+.\kubectl.exe delete service XXX
+.\kubectl.exe delete deployment XXX
+
+
+
+
+

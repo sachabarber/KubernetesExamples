@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-sswebapi-pod-v1
+  labels:
+    app: simple-sswebapi-pod-v1
+spec:
+  containers:
+    - name: simplesswebapipod-v1
+      image: sachabarber/sswebapp-post-5:v1
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 5000
